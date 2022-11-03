@@ -1,18 +1,11 @@
-module "ec2_instance" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "~> 3.0"
+#AWS Instance
 
-  name = "single-instance"
+resource "aws_instance" "example" {
+     ami = var.ami
+     instance_type = var.instance_type
+     availability_zone = var.availability_zone
 
-  ami                    = var.ami
-  instance_type          = var.instance_type
-  vpc_id                 = var.vpc_id
-  key_name               = "user1"
-  monitoring             = true
-
-
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-  }
-}
+lifecycle {
+     ignore_changes = [ami]
+     }
+ }

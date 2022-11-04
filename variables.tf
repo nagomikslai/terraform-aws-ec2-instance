@@ -1,3 +1,5 @@
+#Variables Definitions
+
 variable "ami" {
     type = string
     default = "ami-005e54dee72cc1d00"
